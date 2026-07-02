@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PocketSafetyPro Testing Matrix</title>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.344.0/dist/umd/lucide.min.js"></script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --accent: #f59e0b;
+            --danger: #ef4444;
+            --success: #22c55e;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        body { background-color: var(--bg); color: var(--text); padding: 16px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
+        
+        .container { width: 100%; max-width: 500px; display: flex; flex-direction: column; flex-grow: 1; }
+        
+        header { text-align: center; margin-bottom: 16px; }
+        header h1 { font-size: 1.5rem; color: var(--primary); margin-bottom: 4px; }
+        header p { font-size: 0.875rem; color: var(--text-muted); }
+
+        .progress-bar { height: 6px; width: 100%; background-color: var(--border); border-radius: 3px; margin-bottom: 16px; overflow: hidden; display: flex; }
+        .progress-fill { height: 100%; background-color: var(--primary); transition: width 0.3s ease; width: 12.5%; }
+
+        .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 20px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05); display: none; flex-direction: column; flex-grow: 1; min-height: 400px; }
+        .card.active { display: flex; animation: fadeIn 0.25s ease-in-out; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+        .badge { display: inline-flex; align-items: center; gap: 4px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; padding: 4px 8px; border-radius: 6px; width: fit-content; margin-bottom: 12px; }
+        .badge-info { background: #eff6ff; color: var(--primary); }
+        .badge-warn { background: #fffbeb; color: var(--accent); }
+        .badge-danger { background: #fef2f2; color: var(--danger); }
+        .badge-success { background: #f0fdf4; color: var(--success); }
+
+        h2 { font-size: 1.25rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .meta-strip { display: flex; gap: 12px; font-size: 0.813rem; color: var(--text-muted); margin-bottom: 16px; border-bottom: 1px dashed var(--border); padding-bottom: 12px; }
+        
+        .story { font-style: italic; background: #f1f5f9; padding: 12px; border-radius: 8px; font-size: 0.875rem; color: #475569; margin-bottom: 16px; border-left: 4px solid var(--border); }
+        
+        ol, ul { padding-left: 20px; margin-bottom: 16px; }
+        li { font-size: 0.938rem; margin-bottom: 10px; line-height: 1.4; }
+        li strong { color: var(--primary); }
+        
+        .flag-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; padding: 12px; margin-top: auto; font-size: 0.875rem; }
+        .flag-box strong { color: #b45309; display: flex; align-items: center; gap: 4px; margin-bottom: 4px; }
+
+        .nav-buttons { display: flex; gap: 12px; margin-top: 16px; }
+        button { flex: 1; padding: 14px; border-radius: 12px; border: none; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .btn-prev { background: var(--border); color: var(--text); }
+        .btn-next { background: var(--primary); color: white; }
+        .btn-next:hover { background: var(--primary-dark); }
+        button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        .app-link { display: inline-flex; align-items: center; gap: 6px; background: #e0f2fe; color: #0369a1; padding: 8px 12px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.875rem; margin: 8px 0; border: 1px solid #bae6fd; }
+        code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 0.875rem; color: var(--danger); font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>PocketSafetyPro</h1>
+            <p>Interactive Beta Testing Guide</p>
+        </header>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress"></div>
+        </div>
+
+        <div class="card active" id="card-0">
+            <span class="badge badge-info"><i data-lucide="info" size="14"></i> Pre-Flight</span>
+            <h2>Before You Start</h2>
+            <div class="meta-strip">
+                <span><i data-lucide="clock" size="12"></i> ~15 Mins Total</span>
+                <span><i data-lucide="smartphone" size="12"></i> Mobile Preferred</span>
+            </div>
+            <p style="margin-bottom: 12px; font-size: 0.938rem; line-height: 1.5;">This app replaces field clipboards for shift supervisors to log hazard assessments, signatures, and weather risks in under 5 minutes.</p>
+            <ul>
+                <li><strong>Prerequisite:</strong> A personal <code>@gmail.com</code> address is required to bypass employee SSO imitation screen.</li>
+                <li><strong>Chained Tasks:</strong> Scenarios 1–5 simulate a real workday. <strong>Run them in exact sequential order.</strong></li>
+                <li><strong>Data Convention:</strong> Use your <code>[Initial] & Sons Landscaping</code> and emails like <code>testworker1@fakeco.com</code>.</li>
+            </ul>
+            <div class="flag-box" style="background: #eff6ff; border-color: #bfdbfe;">
+                <strong style="color: var(--primary)"><i data-lucide="shield-alert" size="14"></i> Tester Persona Mindset</strong>
+                If you aren't a Safety Manager, act like a busy workplace foreman trying to keep workers safe from extreme heat while dodging heavy OSHA regulatory fines.
+            </div>
+        </div>
+
+        <div class="card" id="card-1">
+            <span class="badge badge-warn"><i data-lucide="user-plus" size="14"></i> Onboarding</span>
+            <h2>Scenario 1: Workspace Setup</h2>
+            <div class="meta-strip">
+                <span><strong>Role:</strong> Owner / Admin</span>
+                <span><strong>Pass Time:</strong> &lt; 3 Mins</span>
+            </div>
+            <div class="story">Story: You just started a small landscaping company in Florida. Before your crew rolls out Monday morning, initialize your app footprint.</div>
+            <ol>
+                <li>Open the target application environment: <br><a href="https://remix-sage-safety-pocket-pro-975499926560.us-east1.run.app" target="_blank" class="app-link">Launch Safety App <i data-lucide="external-link" size="14"></i></a></li>
+                <li>Tap <strong>"Sign In with Employee Google Identity"</strong> and authenticate with your personal Gmail credentials.</li>
+                <li>Select <strong>"Establish a New Workspace (Path A)"</strong>. Ignore Path B.</li>
+                <li>Fill out company name using convention: <code>[Your Initial] & Sons Landscaping</code>. Choose any location and team size.</li>
+                <li>Select <strong>Landscaping</strong> as the operational category and tap <strong>"Next Step"</strong>.</li>
+                <li>Leave configuration defaults as-is and hit <strong>"Complete & Initialize Workspace"</strong>.</li>
+            </ol>
+            <div class="flag-box">
+                <strong><i data-lucide="eye" size="14"></i> UX Observation Gate:</strong>
+                Did the location engine pause for 3-5 seconds to initialize data? Was Path A's layout clear compared to Path B?
+            </div>
+        </div>
+
+        <div class="card" id="card-2">
+            <span class="badge badge-warn"><i data-lucide="thermometer" size="14"></i> Checklists</span>
+            <h2>Scenario 2: Mid-Day Heat Sweep</h2>
+            <div class="meta-strip">
+                <span><strong>Role:</strong> Shift Manager</span>
+                <span><strong>Location:</strong> Main Dashboard</span>
+            </div>
+            <div class="story">Story: It's noon, the sun is blazing, and the air is uncomfortably hot. Run a rapid safety verification sweep on-site.</div>
+            <ol>
+                <li>Tap <strong>Checklists</strong> on the bottom/main navigation bar.</li>
+                <li>In the default <strong>Heat Check</strong> form, toggle all four block options (Potable Water, Shade Access, etc.) to <strong>ON</strong>.</li>
+                <li>In the new context grid, choose: <code>Extreme Exertion</code>, <code>Protective Gear</code>, and <code>Direct Sun</code>.</li>
+                <li>Verify that a distinct checkmark <strong>(✓)</strong> icon explicitly displays alongside the green state shift.</li>
+                <li>Type <code>Ice chests placed at Zone B scaffold</code> in notes, then tap <strong>"Save Daily Heat Check"</strong>.</li>
+                <li>Scroll up to the Live Heat Risk Calculator, open assessment log tools, and click <strong>Collapse</strong>, then click <strong>Expand</strong>.</li>
+            </ol>
+            <div class="flag-box">
+                <strong><i data-lucide="eye" size="14"></i> UX Observation Gate:</strong>
+                Did the massive calculator collapse cleanly into a compact status bar? Did the checkmark design aid visual accessibility?
+            </div>
+        </div>
+
+        <div class="card" id="card-3">
+            <span class="badge badge-danger"><i data-lucide="wifi-off" size="14"></i> Offline Mode</span>
+            <h2>Scenario 3: Offline Signal Test</h2>
+            <div class="meta-strip">
+                <span><strong>Role:</strong> Shift Manager</span>
+                <span><strong>Sandboxing:</strong> Connection Cut</span>
+            </div>
+            <div class="story">Story: Your crew shifts into a deep remote sector with zero cell signal coverage. You still must legally cache safety gear parameters.</div>
+            <ol>
+                <li>Swipe your system tray open and switch your mobile phone into <strong>Airplane Mode</strong>.</li>
+                <li>Back in the app's Checklist interface, click over to the <strong>"PPE & FA"</strong> secondary tab form.</li>
+                <li>Toggle all four safety rows to ON. Tap <strong>"Save Safety Gear Check"</strong>.</li>
+                <li>Verify the Sync Widget displays <code>1 Pending Sync</code> or an offline status label.</li>
+                <li>Turn your phone's <strong>Airplane Mode OFF</strong>. Click <strong>"Sync Now"</strong> if it doesn't auto-resolve.</li>
+                <li>Once resolved to 0, tap <strong>"Print Safety Report"</strong> at the bottom of the page. Check system print preview.</li>
+            </ol>
+            <div class="flag-box">
+                <strong><i data-lucide="eye" size="14"></i> UX Observation Gate:</strong>
+                Did the print preview load successfully, or was it blank? Did all your checked items (Cooling Vests, Hats) show up in the print log?
+            </div>
+        </div>
+
+        <div class="card" id="card-4">
+            <span class="badge badge-warn"><i data-lucide="users" size="14"></i> Briefings</span>
+            <h2>Scenario 4: 5-Minute Shift Briefing</h2>
+            <div class="meta-strip">
+                <span><strong>Role:</strong> Shift Supervisor</span>
+                <span><strong>Feature:</strong> Digital Signatures</span>
+            </div>
+            <div class="story">Story: The crew is gathered around the service truck bed. You have exactly 5 minutes to deliver a toolkit briefing and register legal proof.</div>
+            <ol>
+                <li>Navigate over to the <strong>Briefings</strong> tab.</li>
+                <li>Tap <strong>"Save Safety Briefing"</strong> immediately on an empty form to stress-test validation behaviors. Note errors.</li>
+                <li>Under suggested topics, locate <em>"Water, shade, and rest breaks"</em> and click <strong>"Use Suggested Topic"</strong>.</li>
+                <li>Scroll to attendees, add 3 fake names sequentially (e.g., <code>Tom Diaz</code>, <code>Sarah Miller</code>) using the <strong>"+"</strong> button.</li>
+                <li>Sign your name directly inside the canvas signature box, then tap <strong>"Save Safety Briefing"</strong>.</li>
+            </ol>
+            <div class="flag-box">
+                <strong><i data-lucide="eye" size="14"></i> UX Observation Gate:</strong>
+                Did the signature track smoothly with zero line lag? Did the saved record cleanly pass down into the "Saved Safety Briefings" log history?
+            </div>
+        </div>
+
+        <div class="card" id="card-5">
+            <span class="badge badge-danger"><i data-lucide="alert-triangle" size="14"></i> Incident Handling</span>
+            <h2>Scenario 5: Log Active Field Hazard</h2>
+            <div class="meta-strip">
+                <span><strong>Role:</strong> Crew Operator</span>
+                <span><strong>Sandbox:</strong> Permission Swapping</span>
+            </div>
+            <div class="story">Story: While staging gear, you spot a critical hazard: a mess of high-voltage production lines laid directly across a high-traffic walking lane.</div>
+            <ol>
+                <li>Find the testing dropdown configuration at the top header and swap your profile from <strong>"Administrator"</strong> to <strong>"Worker / Crew Operator"</strong>.</li>
+                <li>Tap the <strong>Corrective Actions</strong> view tab to ensure you are safely blocked out by a permission security gate.</li>
+                <li>Return to <strong>"Today"</strong> and click the bright red <strong>"Report a Hazard"</strong> interface button.</li>
+                <li>Ensure classification is <code>Hazard</code>. Paste description: <code>High-voltage machinery power cables are tangled directly across the main aisle walkthrough.</code></li>
+                <li>Set location to <code>Zone B – Inner Workspace</code> and click <strong>"Submit Hazard Safety Report"</strong>.</li>
+            </ol>
+            <div class="flag-box">
+                <strong><i data-lucide="eye" size="14"></i> UX Observation Gate:</strong>
+                Did the submitted card cleanly append onto the shared feed with a yellow Hazard element indicator and a "Review Needed" label?
+            </div>
+        </div>
+
+        <div class="card" id="card-6">
+            <span class="badge badge-success"><i data-lucide="check-square" size="14"></i> Resolution</span>
+            <h2>Scenario 6: Resolving Open Issues</h2>
+            <div class="meta-strip">
+                <span><strong>Role:</strong> Shift Manager</span>
+                <span><strong>Track:</strong> Advanced / Wrap Up</span>
+            </div>
+            <div class="story">Story: You are back in management boots. Review the high-voltage hazard report your field operator just generated, and assign remediation tracking.</div>
+            <ol>
+                <li>Flip your header profile role selector back to <strong>"Administrator"</strong>.</li>
+                <li>Click onto the <strong>Corrective Actions</strong> view.</li>
+                <li>Access the open issues dropdown menu and pick the active cable hazard you generated during Scenario 5.</li>
+                <li>Assign target ownership to <code>Mark Jackson</code>.</li>
+                <li>Input remediation details: <code>Coil loose power lines and zip-tie them securely away from walkway traffic.</code></li>
+                <li>Select a forward deadline date and click <strong>"Assign Corrective Action"</strong>.</li>
+            </ol>
+            <div class="flag-box">
+                <strong><i data-lucide="eye" size="14"></i> UX Observation Gate:</strong>
+                Does selecting "Mark Resolved" clean the open tracking view effortlessly? Was the flow from worker report to manager assignment natural?
+            </div>
+        </div>
+
+        <div class="card" id="card-7">
+            <span class="badge badge-success"><i data-lucide="party-popper" size="14"></i> Matrix Complete</span>
+            <h2>Testing Run Completed!</h2>
+            <div class="meta-strip">
+                <span>Thank you for making PocketSafetyPro stable.</span>
+            </div>
+            <p style="margin-bottom: 16px; font-size: 0.938rem; line-height: 1.5;">Your inputs directly shape our production-ready platform deployment parameters. Let's get your raw experience notes over to engineering.</p>
+            
+            <a href="https://forms.gle/ZoB5Sa1pBbvF9n8L8" target="_blank" class="app-link" style="background: #f59e0b; color: white; border: none; padding: 14px; width: 100%; display: flex; justify-content: center; font-size: 1.1rem; border-radius: 12px; box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);">
+                <i data-lucide="form-input" size="18"></i> Open Feedback Form
+            </a>
+            <p style="font-size: 0.813rem; text-align: center; color: var(--text-muted); margin-top: 12px;">Ensure you report visual bugs, text clipping, or button behaviors noticed during verification panels.</p>
+        </div>
+
+        <div class="nav-buttons">
+            <button class="btn-prev" id="btn-prev" disabled><i data-lucide="chevron-left" size="18"></i> Back</button>
+            <button class="btn-next" id="btn-next">Next Step <i data-lucide="chevron-right" size="18"></i></button>
+        </div>
+    </div>
+
+    <script>
+        // Initialize icons
+        lucide.createIcons();
+
+        // State Machine
+        let currentStep = 0;
+        const totalSteps = 7; // Cards 0 through 7
+
+        const btnPrev = document.getElementById('btn-prev');
+        const btnNext = document.getElementById('btn-next');
+        const progress = document.getElementById('progress');
+
+        function updateUI() {
+            // Manage active card states
+            document.querySelectorAll('.card').forEach((card, index) => {
+                if (index === currentStep) {
+                    card.classList.add('active');
+                } else {
+                    card.classList.remove('active');
+                }
+            });
+
+            // Update state modifiers
+            btnPrev.disabled = currentStep === 0;
+            
+            if (currentStep === totalSteps) {
+                btnNext.style.display = 'none';
+                btnPrev.style.width = '100%';
+            } else {
+                btnNext.style.display = 'flex';
+                btnNext.innerHTML = currentStep === totalSteps - 1 ? 'Finish Flow <i data-lucide="check" size="18"></i>' : 'Next Step <i data-lucide="chevron-right" size="18"></i>';
+                lucide.createIcons();
+            }
+
+            // Update linear calculation line
+            const percentage = ((currentStep + 1) / (totalSteps + 1)) * 100;
+            progress.style.width = `${percentage}%`;
+            window.scrollTo(0,0);
+        }
+
+        btnNext.addEventListener('click', () => {
+            if (currentStep < totalSteps) {
+                currentStep++;
+                updateUI();
+            }
+        });
+
+        btnPrev.addEventListener('click', () => {
+            if (currentStep > 0) {
+                currentStep--;
+                updateUI();
+            }
+        });
+    </script>
+</body>
+</html>
