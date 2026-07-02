@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PocketSafetyPro - Advanced Testing Matrix</title>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.344.0/dist/umd/lucide.min.js"></script>
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #3730a3;
+            --bg: #fafafa;
+            --card-bg: #ffffff;
+            --text: #171717;
+            --text-muted: #737373;
+            --border: #e5e5e5;
+            --accent: #d97706;
+            --danger: #dc2626;
+            --success: #16a34a;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        body { background-color: var(--bg); color: var(--text); padding: 16px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
+        .container { width: 100%; max-width: 500px; display: flex; flex-direction: column; flex-grow: 1; }
+        header { text-align: center; margin-bottom: 16px; }
+        header h1 { font-size: 1.5rem; color: var(--primary); margin-bottom: 4px; }
+        header p { font-size: 0.875rem; color: var(--text-muted); }
+        .progress-bar { height: 6px; width: 100%; background-color: var(--border); border-radius: 3px; margin-bottom: 16px; overflow: hidden; display: flex; }
+        .progress-fill { height: 100%; background-color: var(--primary); transition: width 0.3s ease; }
+        .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 20px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05); display: none; flex-direction: column; flex-grow: 1; min-height: 400px; }
+        .card.active { display: flex; animation: fadeIn 0.25s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        .badge { display: inline-flex; align-items: center; gap: 4px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; padding: 4px 8px; border-radius: 6px; width: fit-content; margin-bottom: 12px; }
+        .badge-info { background: #e0e7ff; color: var(--primary); }
+        .badge-warn { background: #fef3c7; color: var(--accent); }
+        .badge-danger { background: #fee2e2; color: var(--danger); }
+        .badge-success { background: #dcfce7; color: var(--success); }
+        h2 { font-size: 1.25rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .meta-strip { display: flex; gap: 12px; font-size: 0.813rem; color: var(--text-muted); margin-bottom: 16px; border-bottom: 1px dashed var(--border); padding-bottom: 12px; }
+        .story { font-style: italic; background: #f5f5f5; padding: 12px; border-radius: 8px; font-size: 0.875rem; color: #525252; margin-bottom: 16px; border-left: 4px solid var(--border); }
+        ol { padding-left: 20px; margin-bottom: 16px; }
+        li { font-size: 0.938rem; margin-bottom: 10px; line-height: 1.4; }
+        li strong { color: var(--primary); }
+        .flag-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; padding: 12px; margin-top: auto; font-size: 0.875rem; }
+        .flag-box strong { color: #b45309; display: flex; align-items: center; gap: 4px; margin-bottom: 4px; }
+        .nav-buttons { display: flex; gap: 12px; margin-top: 16px; }
+        button { flex: 1; padding: 14px; border-radius: 12px; border: none; font-size: 1rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .btn-prev { background: var(--border); color: var(--text); }
+        .btn-next { background: var(--primary); color: white; }
+        button:disabled { opacity: 0.5; cursor: not-allowed; }
+        .app-link { display: inline-flex; align-items: center; gap: 6px; background: #e0f2fe; color: #0369a1; padding: 8px 12px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.875rem; margin: 8px 0; border: 1px solid #bae6fd; }
+        code { background: #f5f5f5; padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 0.875rem; color: var(--danger); font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>PocketSafetyPro</h1>
+            <p>⚡ Advanced Technical Track</p>
+        </header>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress"></div>
+        </div>
+
+        <div class="card active" id="card-0">
+            <span class="badge badge-info"><i data-lucide="shield" size="14"></i> Advanced Track</span>
+            <h2>Technical Testing</h2>
+            <div class="meta-strip">
+                <span><i data-lucide="clock" size="12"></i> ~10 Mins Total</span>
+                <span><i data-lucide="terminal" size="12"></i> Heavy Features</span>
+            </div>
+            <p style="margin-bottom: 12px; font-size: 0.938rem; line-height: 1.5;">This track bypasses daily field routines to deep-dive into camera permissions, hardware image uploads, and multi-layered certification ledgers.</p>
+            <p style="margin-bottom: 12px; font-size: 0.938rem; line-height: 1.5;"><strong>Prerequisite:</strong> You must run Scenario 1 first to establish your sandbox tenant before attempting photo routing or ledger injection.</p>
+            <div class="flag-box" style="background: #e0f2fe; border-color: #bae6fd;">
+                <strong style="color: #0369a1"><i data-lucide="cpu" size="14"></i> Technical Target</strong>
+                Keep an eye out for mobile layout performance lag during photo processing, and check search bar/filter updates inside data tables.
+            </div>
+        </div>
+
+        <div class="card" id="card-1">
+            <span class="badge badge-warn"><i data-lucide="user-plus" size="14"></i> Setup</span>
+            <h2>Scenario 1: Tenant Injection</h2>
+            <div class="meta-strip">
+                <span><strong>Role:</strong> Administrator</span>
+                <span><strong>Link:</strong> Initialized</span>
+            </div>
+            <div class="story">Story: Establish your fictional workplace node so your advanced hazard photos and training records have an isolated org container.</div>
+            <ol>
+                <li>Launch the testing runtime node: <br><a href="https://remix-sage-safety-pocket-pro-975499926560.us-east1.run.app" target="_blank" class="app-link">Launch Safety App <i data-lucide="external-link" size="14"></i></a></li>
+                <li>Tap <strong>"Sign In with Employee Google Identity"</strong> and pass your everyday Google credentials.</li>
+                <li>Tap <strong>"Establish a New Workspace (Path A)"</strong>.</li>
+                <li>Company name convention: <code>[Your Initial] & Sons Landscaping</code>. Select <strong>Landscaping</strong> as your category, leave the rest default, and tap <strong>"Complete & Initialize Workspace"</strong>.</li>
+            </ol>
+            <div class="flag-box">
+                <strong><i data-lucide="clock" size="14"></i> Reminder:</strong>
+                Wait 3-5 seconds for the location index engine to load before continuing.
+            </div>
+        </div>
+
+        <div class="card" id="card-2">
+            <span class="badge badge-danger"><i data-lucide="camera" size="14"></i> Hardware</span>
+            <h2>Scenario 7: Photo Audit Relay</h2>
+            <div class="meta-strip">
+                <span><strong>Role:</strong> Safety Lead / Supervisor</span>
+                <span><strong>Target:</strong> Native Camera API</span>
+            </div>
+            <div class="story">Story: A small mechanical fluid leak is spotted. Your insurance carrier demands direct image verification attached to the liability file.</div>
+            <ol>
+                <li>Navigate over to the <strong>Hazard Reports</strong> view tab and tap <strong>"Report a Hazard"</strong>.</li>
+                <li>Set the report classification type dropdown strictly to <code>Incident</code>.</li>
+                <li>Paste this exact string description: <code>Slight hydraulic leak discovered on the rear axle of the lawn tractor.</code></li>
+                <li>Tap into the dashed <strong>Photo Attachment</strong> target box area.</li>
+                <li>Accept your device's native browser camera permission prompt. Snap a live photo or pull a dummy image file from your library.</li>
+                <li>Tap <strong>"Submit Hazard Safety Report"</strong>.</li>
+            </ol>
+            <div class="flag-box">
+                <strong><i data-lucide="eye" size="14"></i> UX Observation Gate:</strong>
+                Did the pipeline feel slow or timed out over mobile data? Note that the system routes images for cloud-processing—confirm it says photo was received instead of rendering a broken layout thumbnail.
+            </div>
+        </div>
+
+        <div class="card" id="card-3">
+            <span class="badge badge-warn"><i data-lucide="award" size="14"></i> Admin Tools</span>
+            <h2>Scenario 8: Safety Card Ledger</h2>
+            <div class="meta-strip">
+                <span><strong>Role:</strong> Administrator</span>
+                <span><strong>Target:</strong> Data Tables & Filters</span>
+            </div>
+            <div class="story">Story: Your crew operator completes their safety certification block. Log the parameters to legally clear them for commercial field duty.</div>
+            <ol>
+                <li>Tap the <strong>Admin</strong> primary layout tab, then open the <strong>Team Access</strong> sub-menu view.</li>
+                <li>Tap into the amber sub-tab option titled <strong>"Skill & Training Certifications"</strong>.</li>
+                <li>Under the log certification menu, look at the worker dropdown. If empty, tap <strong>"Add Team Member"</strong> first and configure a fake user account using the <code>testworker1@fakeco.com</code> standard.</li>
+                <li>Select your worker. Set type to <code>OSHA 10-Hour Card</code> or <code>High-Heat Illness Prevention Course</code>.</li>
+                <li>Choose a date and tap <strong>"Log Certification Card"</strong>. Test the search bar filter above the table.</li>
+            </ol>
+            <div class="flag-box">
+                <strong><i data-lucide="eye" size="14"></i> UX Observation Gate:</strong>
+                Did the data ledger append instantly? Did the certification status badge clearly pair text metadata with color labels (Active / Expiring) for low-vision accessibility?
+            </div>
+        </div>
+
+        <div class="card" id="card-4">
+            <span class="badge badge-success"><i data-lucide="terminal" size="14"></i> Core Dev Sync</span>
+            <h2>Advanced Track Clear!</h2>
+            <div class="meta-strip">
+                <span>System architecture verification cycle completed.</span>
+            </div>
+            <p style="margin-bottom: 16px; font-size: 0.938rem; line-height: 1.5;">Your detailed inputs on camera response, permission gate blocks, and responsive tabular layouts go directly to our engineering stack.</p>
+            
+            <a href="https://forms.gle/ZoB5Sa1pBbvF9n8L8" target="_blank" class="app-link" style="background: #4f46e5; color: white; border: none; padding: 14px; width: 100%; display: flex; justify-content: center; font-size: 1.1rem; border-radius: 12px; box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3);">
+                <i data-lucide="form-input" size="18"></i> Submit Engineering Log
+            </a>
+        </div>
+
+        <div class="nav-buttons">
+            <button class="btn-prev" id="btn-prev" disabled><i data-lucide="chevron-left" size="18"></i> Back</button>
+            <button class="btn-next" id="btn-next">Next Step <i data-lucide="chevron-right" size="18"></i></button>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        let currentStep = 0;
+        const totalSteps = 4; // 0 to 4
+
+        const btnPrev = document.getElementById('btn-prev');
+        const btnNext = document.getElementById('btn-next');
+        const progress = document.getElementById('progress');
+
+        function updateUI() {
+            document.querySelectorAll('.card').forEach((card, index) => {
+                card.classList.toggle('active', index === currentStep);
+            });
+            btnPrev.disabled = currentStep === 0;
+            if (currentStep === totalSteps) {
+                btnNext.style.display = 'none';
+                btnPrev.style.width = '100%';
+            } else {
+                btnNext.style.display = 'flex';
+                btnNext.innerHTML = currentStep === totalSteps - 1 ? 'Finish Track <i data-lucide="check" size="18"></i>' : 'Next Step <i data-lucide="chevron-right" size="18"></i>';
+                lucide.createIcons();
+            }
+            const percentage = ((currentStep + 1) / (totalSteps + 1)) * 100;
+            progress.style.width = `${percentage}%`;
+            window.scrollTo(0,0);
+        }
+
+        btnNext.addEventListener('click', () => { if (currentStep < totalSteps) { currentStep++; updateUI(); } });
+        btnPrev.addEventListener('click', () => { if (currentStep > 0) { currentStep--; updateUI(); } });
+    </script>
+</body>
+</html>
